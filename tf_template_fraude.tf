@@ -103,7 +103,7 @@ resource "aws_lambda_permission" "LambdaPermission" {
 resource "aws_api_gateway_rest_api" "ApiGatewayRestApi" {
     name = "manageUser-fraude-api-dev"
     api_key_source = "HEADER"
-    policy = "{\\\"Version\\\":\\\"2012-10-17\\\",\\\"Statement\\\":[{\\\"Effect\\\":\\\"Allow\\\",\\\"Principal\\\":\\\"*\\\",\\\"Action\\\":\\\"execute-api:Invoke\\\",\\\"Resource\\\":\\\"*\\\",\\\"Condition\\\":{\\\"IpAddress\\\":{\\\"aws:SourceIp\\\":\\\"40.118.241.243\\/32\\\"}}}]}"
+    policy = "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Effect\":\"Allow\",\"Principal\":\"*\",\"Action\":\"execute-api:Invoke\",\"Resource\":\"*\",\"Condition\":{\"IpAddress\":{\"aws:SourceIp\":\"40.118.241.243/32\"}}}]}"
     endpoint_configuration {
         types = [
             "REGIONAL"
@@ -118,8 +118,8 @@ resource "aws_api_gateway_method" "ApiGatewayMethod" {
     http_method = "POST"
     authorization = "NONE"
     api_key_required = false
-    request_parameters {}
-    request_models {}
+    request_parameters = {}
+    request_models = {}
 }
 
 resource "aws_api_gateway_deployment" "ApiGatewayDeployment" {
